@@ -1,0 +1,57 @@
+<?xml version="1.0" ?>
+<project default="main">
+	<property name="build.classes" value="bin" />
+	<property name="build.lib" value="build" />
+	<property name="java.dir" value="." />
+	<property name="name" value="Freereader" />
+	
+	<path id="classpath">
+		<pathelement location="." />
+	</path>
+
+	<target name="main" depends="compress" description="Main target">
+		<echo>Building the .jar file.</echo>
+	</target>
+
+	<target name="compile" depends="mkdir" description="Compilation target">
+		<javac srcdir="${java.dir}"
+			destdir="${build.classes}"
+			optimize="true"
+			debug="true"
+			source="1.5" 
+			target="1.5">
+			<classpath>
+				<fileset dir="lib">
+					<include name="*.jar"/>
+				</fileset>
+			</classpath>
+		</javac>
+	</target>
+
+	<target name="compress" depends="compile" description="Compression target">
+		<taskdef name="jarjar" 
+			classname="com.tonicsystems.jarjar.JarJarTask" 
+			classpath="lib/jarjar-1.0.jar"/>
+		<jarjar jarfile="${build.lib}/${name}.jar">
+			<manifest>
+				<attribute name="Plugin-Main-Class" value="plugins.Freereader.Freereader" />
+			</manifest>
+			<fileset dir="${build.classes}"/>
+			<fileset dir="." includes="themes/**"/>
+			<zipfileset src="lib/rome-1.0.jar"/>
+			<zipfileset src="lib/jdom.jar"/>
+			<zipfileset src="lib/jaxen-1.1.1.jar"/>
+		</jarjar>
+	</target>
+	
+	<target name="clean" description="Cleanup old builds">
+		<delete dir="${build.dir}" />
+		<delete dir="${build.lib}" />
+	</target>
+	
+	<target name="mkdir" depends="clean" description="Make dirs">
+		<mkdir dir="${build.classes}"/>
+		<mkdir dir="${build.lib}"/>
+	</target>
+
+</project>

@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<title>Freereader - Freenet Plugin - Readme</title>
+
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta http-equiv="Content-Style-Type" content="text/css" />
+		<meta name="keywords" content="Freereader, Freenet, Plugin, RSS, Atom, Feeds" />
+		<meta name="description" content="Freereader is a plugin for the Freenet Network that allows easily uploading of news feeds into Freenet as Freesites." />
+		<meta name="copyright" content="copyright(c) 2009 Mario Volke" />
+		<meta name="author" content="Mario Volke" />
+		<meta name="language" content="en" />
+		<meta name="date" content="2009-07-04" />
+
+		<link rel="stylesheet" href="css/style.css" type="text/css" />
+	</head>
+	<body>
+		<div id="wr">
+			<h1>Freereader - Freenet Plugin</h1>
+			<h2>
+				Readme
+				<span>Version 0.1 (07-04-2009)</span>
+			</h2>
+
+			<h3>What is Freereader?</h3>
+			<p>
+				Freereader is a plugin for a Freenet Node.
+				The goals of Freereader are to provide an easy, semi-automatically way to fill the Freenet Network with interesting and useful content
+				therefore Freereader allows easily uploading of news feeds into Freenet as so-called Freesites.
+				You can then spread those Freesites with the latest news to Freenet users which don't have the privilege to have access to a free and uncensored internet.
+				Freereader will automatically take care of fetching the latest news and updating your Freereader Freesite on a regular basis.
+				Freereader supports the popular feed-formats RSS and ATOM.
+			</p>
+
+			<h3>Requirements & Installation</h3>
+			<p>
+				Freereader is a Freenet Plugin therefore you have to install an up-to-date version of Freenet first.
+				If Freenet is running all requirements for Freereader should also be fulfilled.
+			</p>
+			<ul>
+				<li>Install Freenet version &gt;= 0.7.5 (not tested with older versions)</li>
+				<li>Start your Freenet node and go to <a href="http://127.0.0.1:8888/plugins/">http://127.0.0.1:8888/plugins/</a></li>
+				<li>Go to “Add an Unofficial Plugin”, insert the URL <a href="http://www.example.com">http://www.example.com</a>, uncheck the checkbox “local files only” and press “Load”</li>
+				<li>Freereader is now ready to use and you should now see the Freereader navigation under the main menu</li> 
+			</ul>
+
+			<h3>How to use Freereader?</h3>
+			<p>
+				After successful installation of the Freereader plugin you will find a new navigation menu:
+			</p>
+			<ul>
+				<li>
+					Freereader
+					<ul>
+						<li>Status</li>
+						<li>Add/Remove Feeds</li>
+						<li>Configuration</li>
+					</ul>
+				</li>
+			</ul>
+			<p>
+				On the Status page you can find the current plugin status. 
+				If your Freesite has already been uploaded you find the link to the site on this page also.
+				You can then give the link to your friends in order to grant them access to your Freereader Freesite.
+			</p>
+			<p>
+				Before the plugin can upload a Freesite you have to add some feeds under the “Add/Remove Feeds” page.
+				There you can add a feed by entering a single URL to an RSS or ATOM document or by uploading an OPML-file
+				that contains multiple feed URLs. Most existing Feedreaders are able to export to the OPML-format.
+				But be warned: The feeds will be fetched over the Internet (not over Freenet).
+			</p>
+			<p>
+				On the Configuration page you can configure the interval of Freereader to update your Freesite and
+				also some additional settings.
+			</p>
+
+			<h3>The concept behind Freereader</h3>
+			<p class="center">
+				<img src="images/concept.png" alt="Freereader Concept" />
+			</p>
+			<p>
+				As Freenet itself the Freereader Plugin is written in Java. It uses the <a href="https://rome.dev.java.net/">ROME library</a> for RSS/ATOM syndication.
+				Freereader supports multiple themes for the Freesite it generates. A theme consists of an XSL-stylesheet that &mdash; given an XML-markup of the current feed &mdash;
+				transforms this markup into (X)HTML. A theme can optionally include additional assets, for example images and CSS stylesheets.
+				The Java API for XML processing (JAXP) has an XSLT processor on board and is used to generate a Freesite out of the fetched news feeds.
+				After the generation has been finished Freereader uses the Freenet Plugin API to upload the Freesite into the Freenet Network.
+				Freereader also manages the creation of an SSK for the Freesite.
+			</p>
+
+			<h3>License</h3>
+    		<p>
+				Freereader is free software: you can redistribute it and/or modify
+				it under the terms of the GNU General Public License as published by
+				the Free Software Foundation, either version 3 of the License, or
+				(at your option) any later version.
+			</p>
+			<p>
+				Freereader is distributed in the hope that it will be useful,
+				but <strong>without any warranty</strong>; without even the implied warranty of
+				<strong>merchantability</strong> or <strong>fitness for a particular purpose</strong>.  See the
+				GNU General Public License for more details.
+			</p>
+			<p>
+				You should have received a copy of the GNU General Public License
+				along with Freereader. If not, see <a href="http://www.gnu.org/licenses">http://www.gnu.org/licenses/</a>.
+			</p>
+
+			<h3>Author</h3>
+			<p>
+				Mario Volke
+			</p>
+		</div>
+	</body>
+</html>

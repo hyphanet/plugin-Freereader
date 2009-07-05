@@ -1,0 +1,196 @@
+/** 
+ * Freereader Default Theme Style 
+ * 
+ * @project   Freereader - Freenet Plugin 
+ * @version   0.1
+ * @author    Mario Volke 
+ * @copyright 2009 Mario Volke 
+ * @cssdoc    version 1.0-pre 
+ * @license   GPL v3 
+ */
+
+/** 
+ * Reset 
+ * 
+ * @section reset 
+ * @see     YUI Reset CSS, http://developer.yahoo.com/yui/reset/ 
+ */
+/*
+Copyright (c) 2009, Yahoo! Inc. All rights reserved.
+Code licensed under the BSD License:
+http://developer.yahoo.net/yui/license.txt
+version: 2.7.0
+*/
+html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,button,textarea,p,blockquote,th,td{margin:0;padding:0;}table{border-collapse:collapse;border-spacing:0;}fieldset,img{border:0;}address,caption,cite,code,dfn,em,strong,th,var,optgroup{font-style:inherit;font-weight:inherit;}del,ins{text-decoration:none;}li{list-style:none;}caption,th{text-align:left;}h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal;}q:before,q:after{content:'';}abbr,acronym{border:0;font-variant:normal;}sup{vertical-align:baseline;}sub{vertical-align:baseline;}legend{color:#000;}input,button,textarea,select,optgroup,option{font-family:inherit;font-size:inherit;font-style:inherit;font-weight:inherit;}input,button,textarea,select{*font-size:100%;}
+
+html, body {
+	color:#444;
+	font-family:Arial,Helvetica,sans-serif;
+	font-size:12px;
+	height:100%;
+	letter-spacing:0.03em;	
+	line-height:1.5em;
+}
+
+/** 
+ * Header
+ * 
+ * @section header
+ */
+#hd {
+	background:#115FA8 url(freereader.png)  20px 50% no-repeat;
+	border-bottom:1px solid #A1CEF7;
+	color:#A1CEF7;
+	height:40px;
+	left:0;
+	overflow:hidden;
+	padding:20px 20px 20px 80px;
+	position:absolute;
+	right:0;
+	top:0;
+}
+#hd h1 {
+	color:#fff;
+	float:left;
+	font-family:Georgia,"Times New Roman",Times,serif;
+	font-size:30px;
+	line-height:40px;
+}
+#hd p {
+	float:left;
+	font-style:italic;
+	margin-left:20px;
+}
+#hd p.updated {
+    float:right;
+    font-style:italic;
+    margin-top:-10px;
+}
+
+/** 
+ * sb
+ * 
+ * @section sidebar
+ */
+#sb {
+	background-color:#fff;
+	border-right:1px solid #A1CEF7;
+	bottom:0;
+	left:0;
+	overflow:auto;
+	padding:10px;
+	position:absolute;
+	top:81px;
+	width:230px;
+}
+#sb h2 {
+	font-size:14px;
+	font-weight:bold;
+	margin-bottom:5px;
+}
+#sb li {
+	overflow:hidden;
+	margin-left:-10px;
+	margin-right:-10px;
+}
+#sb li a {
+	background:url(feed.png) 10px 50% no-repeat;
+	color:#444;
+	display:block;
+	line-height:20px;
+	overflow:hidden;
+	padding-left:30px;
+	text-decoration:none;
+	white-space:nowrap;
+}
+#sb li.active a {
+	background-color:#CBED82;
+}
+#sb li a:hover,
+#sb li a:focus,
+#sb li a:active {
+	background-color:#C7E8FF;
+}
+
+/** 
+ * bd
+ * 
+ * @section body
+ */
+#bd {
+	background-color:#DBDBDB;
+	bottom:0;
+	left:251px;
+	overflow:auto;
+	padding:5px;
+	position:absolute;
+	right:0;
+	top:81px;
+}
+#bd > div.entry {
+	background-color:#fff;
+	border:1px solid #444;
+	padding:20px;
+	margin-bottom:5px;
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px;
+}
+#bd > div.entry > div.entry-date {
+	float:right;
+}
+#bd > div.entry > h2 {
+	color:#115FA8;
+	font-size:18px;
+	font-weight:bold;
+	max-width:650px;
+}
+#bd > div.entry > div.entry-author {
+	margin-top:5px;
+}
+#bd > div.entry > div.entry-body {
+	color:#000;
+	margin-top:10px;
+	max-width:650px;
+}
+#bd > div.entry > div.entry-body ul li {
+    list-style-type:disc;
+}
+#bd > div.entry > div.entry-body ol li {
+    list-style-type:decimal;
+}
+#bd > div.entry > div.entry-body ol li,
+#bd > div.entry > div.entry-body ul li {
+    list-style-position:output;
+    margin-left:40px;
+}
+#bd > div.entry > div.entry-body h1 {
+    font-size:1.5em;
+}
+#bd > div.entry > div.entry-body h2 {
+    font-size:1.3em;
+}
+#bd > div.entry > div.entry-body h3 {
+    font-size:1.2em;
+}
+#bd > div.entry > div.entry-body h4 {
+    font-size:1.1em;
+}
+#bd > div.entry > div.entry-body h1,
+#bd > div.entry > div.entry-body h2,
+#bd > div.entry > div.entry-body h3,
+#bd > div.entry > div.entry-body h4,
+#bd > div.entry > div.entry-body h5,
+#bd > div.entry > div.entry-body h6 {
+    font-weight:bold;
+    margin-bottom:1em;
+}
+#bd > div.entry > div.entry-body p,
+#bd > div.entry > div.entry-body ol,
+#bd > div.entry > div.entry-body ul {
+    margin-bottom:1em;
+}
+#bd > div.message {
+	text-align:center;
+    margin-top:100px;
+	max-width:650px;
+}

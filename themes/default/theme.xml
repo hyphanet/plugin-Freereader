@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<theme name="default">
+	<asset file="assets/feed.png"/>
+	<asset file="assets/freereader.png"/>
+	<asset file="assets/style.css"/>
+</theme>
