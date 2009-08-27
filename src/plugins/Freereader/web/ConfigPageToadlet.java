@@ -35,14 +35,7 @@ public class ConfigPageToadlet extends Toadlet
 		return "/freereader/config";
 	}
 
-	@Override
-	public String supportedMethods() 
-	{
-		return "GET, POST";
-	}
-
-	@Override
-	public void handleGet(URI uri, final HTTPRequest request, final ToadletContext ctx) 
+	public void handleMethodGET(URI uri, final HTTPRequest request, final ToadletContext ctx) 
 	throws ToadletContextClosedException, IOException, RedirectException 
 	{
 		ClassLoader origClassLoader = Thread.currentThread().getContextClassLoader();
@@ -60,8 +53,7 @@ public class ConfigPageToadlet extends Toadlet
 		}
 	}
 	
-	@Override
-	public void handlePost(URI uri, HTTPRequest request, final ToadletContext ctx) 
+	public void handleMethodPOST(URI uri, HTTPRequest request, final ToadletContext ctx) 
 	throws ToadletContextClosedException, IOException, RedirectException 
 	{
 		ClassLoader origClassLoader = Thread.currentThread().getContextClassLoader();

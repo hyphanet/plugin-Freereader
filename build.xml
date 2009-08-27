@@ -65,6 +65,9 @@
                 <mkdir dir="lib/"/>
                 <mkdir dir="${tmp}"/>
                 <ant target="JDOM-get"/>
+		<ant target="JarJar-get"/>
+		<ant target="Jaxen-get" />
+		<ant target="ROME-get" />
                 <delete dir="${tmp}"/>
         </target>
 
@@ -117,7 +120,7 @@
 	<property name="Jaxen.sha1" value="316c96ae2ebca5ea71ecf08274e612b1868121c3" />
 	<available property="Jaxen.exist" classname="org.jaxen.Context" classpath="${Jaxen.location}" />
 	<target name="Jaxen-get" unless="Jaxen.exist">
-		<get verbose="true" src="${JarJar.mirror}" dest="${tmp}/jaxen-1.1.1.zip" />
+		<get verbose="true" src="${Jaxen.mirror}" dest="${tmp}/jaxen-1.1.1.zip" />
 		<checksum file="${tmp}/jaxen-1.1.1.zip" algorithm="MD5" property="${Jaxen.md5}" verifyProperty="JaxenMD5ok" />
 		<checksum file="${tmp}/jaxen-1.1.1.zip" algorithm="SHA1" property="${Jaxen.sha1}" verifyProperty="JaxenSHA1ok" />
 		<fail message="jaxen-1.1.1.zip checksum mismatch">
