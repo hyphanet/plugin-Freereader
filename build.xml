@@ -6,6 +6,8 @@
 	<property name="name" value="Freereader" />
 	<property name="freenet-cvs-snapshot.location" location="../fred/lib/freenet-cvs-snapshot.jar"/>
 	<property name="freenet-ext.location" location="../fred/lib/freenet-ext.jar"/>
+	<property name="JDOM.location" location="lib/jdom.jar"/>
+	<property name="tmp" location="tmp/"/>
 	
 	<path id="classpath">
 		<pathelement location="." />
@@ -15,7 +17,7 @@
 		<echo>Building the .jar file.</echo>
 	</target>
 
-	<target name="compile" depends="mkdir" description="Compilation target">
+	<target name="compile" depends="build-dep" description="Compilation target">
 		<javac srcdir="${java.dir}"
 			destdir="${build.classes}"
 			optimize="true"
@@ -54,9 +56,36 @@
 		<delete dir="${build.lib}" />
 	</target>
 	
-	<target name="mkdir" depends="clean" description="Make dirs">
+        <target name="build-dep">
 		<mkdir dir="${build.classes}"/>
 		<mkdir dir="${build.lib}"/>
-	</target>
+                <mkdir dir="lib/"/>
+                <mkdir dir="${tmp}"/>
+                <ant target="JDOM-get"/>
+                <delete dir="${tmp}"/>
+        </target>
 
+	<property name="JDOM.mirror" value="http://www.jdom.org/dist/binary/jdom-1.1.1.zip" />
+	<property name="JDOM.md5" value="4ea82cf93603d0b22e06df4ff6e8d94e" />
+	<property name="JDOM.sha1" value="e887ce82ccc1f03991b48ba8a190b2d42b2129da" />
+	<available property="JDOM.exist" classname="org.jdom.Document" classpath="${JDOM.location}" />
+	<target name="JDOM-get" unless="JDOM.exist">
+		<get verbose="true" src="${JDOM.mirror}" dest="${tmp}/JDOM-1.1.1.zip" />
+		<checksum file="${tmp}/JDOM-1.1.1.zip" algorithm="MD5" property="${JDOM.md5}" verifyProperty="JDOMMD5ok" />
+		<checksum file="${tmp}/JDOM-1.1.1.zip" algorithm="SHA1" property="${JDOM.sha1}" verifyProperty="JDOMSHA1ok" />
+		<fail message="JDOM-1.1.1.zip checksum mismatch">
+			<condition>
+				<or>
+					<equals arg1="${JDOMMD5ok}" arg2="false" />
+					<equals arg1="${JDOMSHA1ok}" arg2="false" />
+				</or>
+			</condition>
+		</fail>
+		<unzip src="${tmp}/JDOM-1.1.1.zip" dest="lib/">
+			<patternset>
+				<include name="**/jdom.jar" />
+			</patternset>
+			<mapper type="flatten"/>
+		</unzip>
+	</target>
 </project>
