@@ -9,6 +9,7 @@
 	<property name="JDOM.location" location="lib/jdom.jar"/>
 	<property name="JarJar.location" location="lib/jarjar-1.0.jar"/>
 	<property name="Jaxen.location" location="lib/jaxen-1.1.1.jar"/>
+	<property name="ROME.location" location="lib/rome-1.0.jar"/>
 	<property name="tmp" location="tmp/"/>
 	
 	<path id="classpath">
@@ -135,5 +136,24 @@
 		</unzip>
 	</target>
 
+	<property name="ROME.mirror" value="https://rome.dev.java.net/dist/rome-1.0.jar" />
+	<property name="ROME.md5" value="de11767f8b3ec4947070d9c05c733dac" />
+	<property name="ROME.sha1" value="681104ed3e525037272533218185afbea3e40d04" />
+	<available property="ROME.exist" classname="com.sun.syndication.feed.atom.Content" classpath="${ROME.location}" />
+	<target name="ROME-get" unless="ROME.exist">
+		<get verbose="true" src="${ROME.mirror}" dest="${tmp}/rome-1.0.jar" />
+		<checksum file="${tmp}/rome-1.0.jar" algorithm="MD5" property="${ROME.md5}" verifyProperty="ROMEMD5ok" />
+		<checksum file="${tmp}/rome-1.0.jar" algorithm="SHA1" property="${ROME.sha1}" verifyProperty="ROMESHA1ok" />
+		<fail message="rome-1.0.jar checksum mismatch">
+			<condition>
+				<or>
+					<equals arg1="${ROMEMD5ok}" arg2="false" />
+					<equals arg1="${ROMESHA1ok}" arg2="false" />
+				</or>
+			</condition>
+		</fail>
+		<copy file="${tmp}/rome-1.0.jar" tofile="${ROME.location}" />
+		<delete file="${tmp}/rome-1.0.jar"/>
+	</target>
 
 </project>
