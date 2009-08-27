@@ -57,6 +57,7 @@
 	<target name="clean" description="Cleanup old builds">
 		<delete dir="${build.dir}" />
 		<delete dir="${build.lib}" />
+		<delete dir="${build.classes}" />
 	</target>
 	
         <target name="build-dep">
