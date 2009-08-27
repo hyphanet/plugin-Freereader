@@ -7,6 +7,7 @@
 	<property name="freenet-cvs-snapshot.location" location="../fred/lib/freenet-cvs-snapshot.jar"/>
 	<property name="freenet-ext.location" location="../fred/lib/freenet-ext.jar"/>
 	<property name="JDOM.location" location="lib/jdom.jar"/>
+	<property name="JarJar.location" location="lib/jarjar-1.0.jar"/>
 	<property name="tmp" location="tmp/"/>
 	
 	<path id="classpath">
@@ -88,4 +89,25 @@
 			<mapper type="flatten"/>
 		</unzip>
 	</target>
+
+	<property name="JarJar.mirror" value="http://jarjar.googlecode.com/files/jarjar-1.0.jar" />
+	<property name="JarJar.md5" value="2e2a08efcd4c55b0228fa0dac6d13e43" />
+	<property name="JarJar.sha1" value="1d6624ccf3eca99bdbbb8c2445c1a8e70076588b" />
+	<available property="JarJar.exist" classname="com.tonicsystems.jarjar.Main" classpath="${JarJar.location}" />
+	<target name="JDOM-get" unless="JDOM.exist">
+		<get verbose="true" src="${JDOM.mirror}" dest="${tmp}/jarjar-1.0.jar" />
+		<checksum file="${tmp}/jarjar-1.0.jar" algorithm="MD5" property="${JarJar.md5}" verifyProperty="JarJarMD5ok" />
+		<checksum file="${tmp}/jarjar-1.0.jar" algorithm="SHA1" property="${JarJar.sha1}" verifyProperty="JarJarSHA1ok" />
+		<fail message="jarjar-1.0.jar checksum mismatch">
+			<condition>
+				<or>
+					<equals arg1="${JarJarMD5ok}" arg2="false" />
+					<equals arg1="${JarJarSHA1ok}" arg2="false" />
+				</or>
+			</condition>
+		</fail>
+		<copy file="${tmp}/jarjar-1.0.jar" tofile="${JarJar.location}" />
+		<delete file="${tmp}/jarjar-1.0.jar"/>
+	</target>
+
 </project>
