@@ -8,6 +8,7 @@
 	<property name="freenet-ext.location" location="../fred/lib/freenet-ext.jar"/>
 	<property name="JDOM.location" location="lib/jdom.jar"/>
 	<property name="JarJar.location" location="lib/jarjar-1.0.jar"/>
+	<property name="Jaxen.location" location="lib/jaxen-1.1.1.jar"/>
 	<property name="tmp" location="tmp/"/>
 	
 	<path id="classpath">
@@ -94,8 +95,8 @@
 	<property name="JarJar.md5" value="2e2a08efcd4c55b0228fa0dac6d13e43" />
 	<property name="JarJar.sha1" value="1d6624ccf3eca99bdbbb8c2445c1a8e70076588b" />
 	<available property="JarJar.exist" classname="com.tonicsystems.jarjar.Main" classpath="${JarJar.location}" />
-	<target name="JDOM-get" unless="JDOM.exist">
-		<get verbose="true" src="${JDOM.mirror}" dest="${tmp}/jarjar-1.0.jar" />
+	<target name="JarJar-get" unless="JarJar.exist">
+		<get verbose="true" src="${JarJar.mirror}" dest="${tmp}/jarjar-1.0.jar" />
 		<checksum file="${tmp}/jarjar-1.0.jar" algorithm="MD5" property="${JarJar.md5}" verifyProperty="JarJarMD5ok" />
 		<checksum file="${tmp}/jarjar-1.0.jar" algorithm="SHA1" property="${JarJar.sha1}" verifyProperty="JarJarSHA1ok" />
 		<fail message="jarjar-1.0.jar checksum mismatch">
@@ -109,5 +110,30 @@
 		<copy file="${tmp}/jarjar-1.0.jar" tofile="${JarJar.location}" />
 		<delete file="${tmp}/jarjar-1.0.jar"/>
 	</target>
+
+	<property name="Jaxen.mirror" value="http://dist.codehaus.org/jaxen/distributions/jaxen-1.1.1.zip" />
+	<property name="Jaxen.md5" value="d941dc9e4c6fe6667e67562699b356f4" />
+	<property name="Jaxen.sha1" value="316c96ae2ebca5ea71ecf08274e612b1868121c3" />
+	<available property="Jaxen.exist" classname="org.jaxen.Context" classpath="${Jaxen.location}" />
+	<target name="Jaxen-get" unless="Jaxen.exist">
+		<get verbose="true" src="${JarJar.mirror}" dest="${tmp}/jaxen-1.1.1.zip" />
+		<checksum file="${tmp}/jaxen-1.1.1.zip" algorithm="MD5" property="${Jaxen.md5}" verifyProperty="JaxenMD5ok" />
+		<checksum file="${tmp}/jaxen-1.1.1.zip" algorithm="SHA1" property="${Jaxen.sha1}" verifyProperty="JaxenSHA1ok" />
+		<fail message="jaxen-1.1.1.zip checksum mismatch">
+			<condition>
+				<or>
+					<equals arg1="${JaxenMD5ok}" arg2="false" />
+					<equals arg1="${JaxenSHA1ok}" arg2="false" />
+				</or>
+			</condition>
+		</fail>
+		<unzip src="${tmp}/jaxen-1.1.1.zip" dest="lib/">
+			<patternset>
+				<include name="**/jaxen-1.1.1.jar" />
+			</patternset>
+			<mapper type="flatten"/>
+		</unzip>
+	</target>
+
 
 </project>
