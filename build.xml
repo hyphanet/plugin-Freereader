@@ -42,7 +42,7 @@
 		<taskdef name="jarjar" 
 			classname="com.tonicsystems.jarjar.JarJarTask" 
 			classpath="lib/jarjar-1.0.jar"/>
-		<jarjar jarfile="${build.lib}/${name}.jar">
+		<jarjar jarfile="dist/${name}.jar">
 			<manifest>
 				<attribute name="Plugin-Main-Class" value="plugins.Freereader.Freereader" />
 			</manifest>
@@ -64,6 +64,7 @@
 		<mkdir dir="${build.lib}"/>
                 <mkdir dir="lib/"/>
                 <mkdir dir="${tmp}"/>
+		<mkdir dir="dist"/>
                 <ant target="JDOM-get"/>
 		<ant target="JarJar-get"/>
 		<ant target="Jaxen-get" />
