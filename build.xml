@@ -4,6 +4,8 @@
 	<property name="build.lib" value="build" />
 	<property name="java.dir" value="." />
 	<property name="name" value="Freereader" />
+	<property name="freenet-cvs-snapshot.location" location="../fred/lib/freenet-cvs-snapshot.jar"/>
+	<property name="freenet-ext.location" location="../fred/lib/freenet-ext.jar"/>
 	
 	<path id="classpath">
 		<pathelement location="." />
@@ -21,6 +23,9 @@
 			source="1.5" 
 			target="1.5">
 			<classpath>
+				<pathelement location="${freenet-ext.location}"/>
+				<pathelement location="${freenet-cvs-snapshot.location}"/>
+
 				<fileset dir="lib">
 					<include name="*.jar"/>
 				</fileset>
