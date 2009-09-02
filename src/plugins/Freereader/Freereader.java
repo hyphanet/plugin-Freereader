@@ -6,7 +6,7 @@ import plugins.Freereader.web.WebInterface;
 import freenet.pluginmanager.*;
 import freenet.clients.http.PageMaker;
 import freenet.support.Logger;
-import freenet.l10n.L10n.LANGUAGE;
+import freenet.l10n.BaseL10n.LANGUAGE;
 
 import java.util.Timer;
 
