@@ -45,7 +45,7 @@ public class Store
 	public static synchronized Store getInstance(Freereader freereader) 
 	{
 		if(instance == null) {
-			instance = new Store(freereader.getClassLoader());
+			instance = new Store(Freereader.class.getClassLoader());
 		}
 		return instance;
 	}

@@ -16,10 +16,9 @@ import java.util.Timer;
  * 
  * @author Mario Volke
  */
-public class Freereader implements FredPlugin, FredPluginThreadless, FredPluginVersioned, FredPluginRealVersioned, FredPluginWithClassLoader, FredPluginL10n 
+public class Freereader implements FredPlugin, FredPluginThreadless, FredPluginVersioned, FredPluginRealVersioned, FredPluginL10n 
 {
 	private PluginRespirator pluginRespirator;
-	private ClassLoader classLoader;
 	private WebInterface webInterface;
 	
 	private Config config;
@@ -61,20 +60,6 @@ public class Freereader implements FredPlugin, FredPluginThreadless, FredPluginV
 	public PageMaker getPageMaker()
 	{
 		return pluginRespirator.getPageMaker();
-	}
-	
-	/**
-	 * Called by the node during the loading of the plugin. The <code>ClassLoader</code> which was used by the node is passed to db4o
-	 * by Freereader. Db4o needs to know the <code>ClassLoader</code> which was used to create the classes of the objects it is supposed to store.
-	 */
-	public void setClassLoader(ClassLoader classLoader) 
-	{
-		this.classLoader = classLoader;
-	}
-	
-	public ClassLoader getClassLoader() 
-	{
-		return classLoader;
 	}
 	
 	public void terminate() 
