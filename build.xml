@@ -73,7 +73,7 @@
                 <delete dir="${tmp}"/>
         </target>
 
-	<property name="JDOM.mirror" value="http://www.jdom.org/dist/binary/jdom-1.1.1.zip" />
+	<property name="JDOM.mirror" value="http://www.jdom.org/dist/binary/archive/jdom-1.1.1.zip" />
 	<property name="JDOM.md5" value="4ea82cf93603d0b22e06df4ff6e8d94e" />
 	<property name="JDOM.sha1" value="e887ce82ccc1f03991b48ba8a190b2d42b2129da" />
 	<available property="JDOM.exist" classname="org.jdom.Document" classpath="${JDOM.location}" />
@@ -141,7 +141,7 @@
 		</unzip>
 	</target>
 
-	<property name="ROME.mirror" value="https://rome.dev.java.net/dist/rome-1.0.jar" />
+	<property name="ROME.mirror" value="https://rometools.jira.com/wiki/download/attachments/1998914/rome-1.0.jar?api=v2" />
 	<property name="ROME.md5" value="de11767f8b3ec4947070d9c05c733dac" />
 	<property name="ROME.sha1" value="681104ed3e525037272533218185afbea3e40d04" />
 	<available property="ROME.exist" classname="com.sun.syndication.feed.atom.Content" classpath="${ROME.location}" />
