@@ -7,9 +7,9 @@ import plugins.Freereader.Store;
 
 import com.db4o.ext.ExtObjectContainer;
 
-import freenet.pluginmanager.*;
 import freenet.client.HighLevelSimpleClient;
 import freenet.keys.FreenetURI;
+import freenet.pluginmanager.PluginRespirator;
 import freenet.support.Logger;
 
 /**

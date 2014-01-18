@@ -1,14 +1,18 @@
 package plugins.Freereader;
 
+import java.util.Timer;
+
 import plugins.Freereader.models.Config;
 import plugins.Freereader.web.WebInterface;
-
-import freenet.pluginmanager.*;
 import freenet.clients.http.PageMaker;
-import freenet.support.Logger;
 import freenet.l10n.BaseL10n.LANGUAGE;
-
-import java.util.Timer;
+import freenet.pluginmanager.FredPlugin;
+import freenet.pluginmanager.FredPluginL10n;
+import freenet.pluginmanager.FredPluginRealVersioned;
+import freenet.pluginmanager.FredPluginThreadless;
+import freenet.pluginmanager.FredPluginVersioned;
+import freenet.pluginmanager.PluginRespirator;
+import freenet.support.Logger;
 
 /**
  * Freereader

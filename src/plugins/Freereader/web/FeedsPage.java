@@ -4,10 +4,6 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 
-import com.sun.syndication.feed.synd.SyndFeed;
-import com.sun.syndication.io.SyndFeedInput;
-import com.sun.syndication.io.XmlReader;
-
 import org.jdom.Attribute;
 import org.jdom.Document;
 import org.jdom.JDOMException;
@@ -15,8 +11,12 @@ import org.jdom.input.SAXBuilder;
 import org.jdom.xpath.XPath;
 
 import plugins.Freereader.Freereader;
-import plugins.Freereader.models.*;
+import plugins.Freereader.models.Feeds;
 import plugins.Freereader.models.Feeds.Feed;
+
+import com.sun.syndication.feed.synd.SyndFeed;
+import com.sun.syndication.io.SyndFeedInput;
+import com.sun.syndication.io.XmlReader;
 
 import freenet.clients.http.PageMaker;
 import freenet.pluginmanager.PluginRespirator;

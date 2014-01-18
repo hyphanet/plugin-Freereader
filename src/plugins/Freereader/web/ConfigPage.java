@@ -2,7 +2,6 @@ package plugins.Freereader.web;
 
 import plugins.Freereader.Freereader;
 import plugins.Freereader.models.Config;
-
 import freenet.clients.http.PageMaker;
 import freenet.pluginmanager.PluginRespirator;
 import freenet.support.HTMLNode;

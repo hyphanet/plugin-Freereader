@@ -4,8 +4,8 @@ import java.util.Date;
 
 import plugins.Freereader.Freereader;
 import plugins.Freereader.UpdateTask;
-import plugins.Freereader.models.*;
-
+import plugins.Freereader.models.Feeds;
+import plugins.Freereader.models.Status;
 import freenet.clients.http.PageMaker;
 import freenet.pluginmanager.PluginRespirator;
 import freenet.support.HTMLNode;
