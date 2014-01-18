@@ -47,20 +47,20 @@ class FeedsPage implements WebPage
 	public void processPostRequest(HTTPRequest request, HTMLNode contentNode) 
 	{		
 		if(request.isPartSet("action")) {
-			if(request.getPartAsString("action", 20).equals("remove")) {
+			if(request.getPartAsStringFailsafe("action", 20).equals("remove")) {
 				// remove form submitted
 				if(request.isPartSet("size")) {
 					int size = request.getIntPart("size", 0);
 					for(int i = 0; i < size; ++i) {
 						if(request.isPartSet("remove-" + i)) {
-							feeds.removeFeed(request.getPartAsString("remove-" + i, 300));
+							feeds.removeFeed(request.getPartAsStringFailsafe("remove-" + i, 300));
 						}
 					}
 					
 					feeds.store();
 				}
 			}
-			else if(request.getPartAsString("action", 20).equals("opml")) {
+			else if(request.getPartAsStringFailsafe("action", 20).equals("opml")) {
 				if(request.isPartSet("opml")) {					
 					HTTPUploadedFile opml = request.getUploadedFile("opml");
 					if(opml != null) {
@@ -115,7 +115,7 @@ class FeedsPage implements WebPage
 			else {
 				// add single form submitted
 				if(request.isPartSet("url")) {
-					String url = request.getPartAsString("url", 300);
+					String url = request.getPartAsStringFailsafe("url", 300);
 					// check if URL is already in feed list
 					if(feeds.hasFeed(url)) {
 						pageMaker.getInfobox("infobox infobox-error", "Error adding Feed", contentNode).

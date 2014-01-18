@@ -34,11 +34,11 @@ class ConfigPage implements WebPage
 			config.setUpdateInterval(i * 60);
 		}
 		if(request.isPartSet("basename")) {
-			String s = request.getPartAsString("basename", 200);
+			String s = request.getPartAsStringFailsafe("basename", 200);
 			config.setBasename(s);
 		}
 		if(request.isPartSet("theme")) {
-			String s = request.getPartAsString("theme", 200);
+			String s = request.getPartAsStringFailsafe("theme", 200);
 			config.setTheme(s);
 		}
 		
