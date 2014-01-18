@@ -28,8 +28,8 @@ import org.jdom.transform.JDOMSource;
 
 import plugins.Freereader.models.Config;
 import plugins.Freereader.models.Feeds;
-import plugins.Freereader.models.Status;
 import plugins.Freereader.models.Feeds.Feed;
+import plugins.Freereader.models.Status;
 
 import com.sun.syndication.feed.synd.SyndFeed;
 import com.sun.syndication.io.FeedException;

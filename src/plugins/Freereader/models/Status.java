@@ -6,6 +6,7 @@ import plugins.Freereader.Freereader;
 import plugins.Freereader.Store;
 
 import com.db4o.ext.ExtObjectContainer;
+
 import freenet.support.Logger;
 
 /**

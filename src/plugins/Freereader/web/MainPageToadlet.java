@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.net.URI;
 
 import plugins.Freereader.Freereader;
-
 import freenet.client.HighLevelSimpleClient;
 import freenet.clients.http.PageNode;
 import freenet.clients.http.RedirectException;
