@@ -1,8 +1,8 @@
 package plugins.Freereader.web;
 
 import plugins.Freereader.Freereader;
-import freenet.clients.http.ToadletContainer;
 import freenet.client.HighLevelSimpleClient;
+import freenet.clients.http.ToadletContainer;
 
 /**
  * WebInterface

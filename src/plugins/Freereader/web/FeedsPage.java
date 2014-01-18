@@ -4,10 +4,6 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 
-import com.sun.syndication.feed.synd.SyndFeed;
-import com.sun.syndication.io.SyndFeedInput;
-import com.sun.syndication.io.XmlReader;
-
 import org.jdom.Attribute;
 import org.jdom.Document;
 import org.jdom.JDOMException;
@@ -15,8 +11,12 @@ import org.jdom.input.SAXBuilder;
 import org.jdom.xpath.XPath;
 
 import plugins.Freereader.Freereader;
-import plugins.Freereader.models.*;
+import plugins.Freereader.models.Feeds;
 import plugins.Freereader.models.Feeds.Feed;
+
+import com.sun.syndication.feed.synd.SyndFeed;
+import com.sun.syndication.io.SyndFeedInput;
+import com.sun.syndication.io.XmlReader;
 
 import freenet.clients.http.PageMaker;
 import freenet.pluginmanager.PluginRespirator;
@@ -47,20 +47,20 @@ class FeedsPage implements WebPage
 	public void processPostRequest(HTTPRequest request, HTMLNode contentNode) 
 	{		
 		if(request.isPartSet("action")) {
-			if(request.getPartAsString("action", 20).equals("remove")) {
+			if(request.getPartAsStringFailsafe("action", 20).equals("remove")) {
 				// remove form submitted
 				if(request.isPartSet("size")) {
 					int size = request.getIntPart("size", 0);
 					for(int i = 0; i < size; ++i) {
 						if(request.isPartSet("remove-" + i)) {
-							feeds.removeFeed(request.getPartAsString("remove-" + i, 300));
+							feeds.removeFeed(request.getPartAsStringFailsafe("remove-" + i, 300));
 						}
 					}
 					
 					feeds.store();
 				}
 			}
-			else if(request.getPartAsString("action", 20).equals("opml")) {
+			else if(request.getPartAsStringFailsafe("action", 20).equals("opml")) {
 				if(request.isPartSet("opml")) {					
 					HTTPUploadedFile opml = request.getUploadedFile("opml");
 					if(opml != null) {
@@ -115,7 +115,7 @@ class FeedsPage implements WebPage
 			else {
 				// add single form submitted
 				if(request.isPartSet("url")) {
-					String url = request.getPartAsString("url", 300);
+					String url = request.getPartAsStringFailsafe("url", 300);
 					// check if URL is already in feed list
 					if(feeds.hasFeed(url)) {
 						pageMaker.getInfobox("infobox infobox-error", "Error adding Feed", contentNode).
