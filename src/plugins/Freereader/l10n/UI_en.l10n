@@ -1,0 +1,21 @@
+Common.AddRemoveFeeds=Add/Remove Feeds
+Common.BaseDirectory=The base directory of the freesite.
+Common.Configuration=Configuration
+Common.Status=Status
+Common.submit=submit
+Common.RUNNING=RUNNING
+Common.IDLE=IDLE
+Common.NEVER=NEVER
+Common.submit=submit
+Main.AvailabelAt=Your Freereader Freesite is available at:
+Main.CreateUpload=Create and Upload Freesite now
+Main.CreationUploadProcess=Creation and Upload Process: 
+Main.LastUpdated=Last Uploaded: 
+Main.FeedsNumber=Number of Feeds: 
+Main.FreereaderFreesiteNotUploaded=The Freereader Freesite has not been uploaded yet.
+Main.FreeSiteNumberUp=Number of Freesite Uploads: 
+Main.CreateUploadFreesite=Create and Upload Freesite
+Main.Status=Freereader Status
+Main.YourFreeReaderFreesite=Your Freereader Freesite
+OK=OK
+End

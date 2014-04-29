@@ -3,9 +3,11 @@ package plugins.Freereader.web;
 import plugins.Freereader.Freereader;
 import plugins.Freereader.models.Config;
 import freenet.clients.http.PageMaker;
+import freenet.l10n.PluginL10n;
 import freenet.pluginmanager.PluginRespirator;
 import freenet.support.HTMLNode;
 import freenet.support.api.HTTPRequest;
+
 
 /**
  * ConfigPage
@@ -22,7 +24,6 @@ class ConfigPage implements WebPage
 	{
 		pageMaker = freereader.getPageMaker();
 		pr = freereader.getPluginRespirator();
-
 		config = Config.getInstance(freereader);
 	}
 
@@ -62,7 +63,7 @@ class ConfigPage implements WebPage
 		        String.valueOf(config.getUpdateInterval() / 60));
 		
 		addConfig(freereaderConfig,
-		        "Freesite Basename", "The base directory of the freesite.",
+		        "Freesite Basename", Freereader.getBaseL10n().getString("Common.BaseDirectory"),
 		        "basename",
 		        config.getBasename());
 		

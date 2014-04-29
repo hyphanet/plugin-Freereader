@@ -45,40 +45,40 @@ class MainPage implements WebPage
 	public void writeContent(HTTPRequest request, HTMLNode contentNode) 
 	{
 		// Status Box
-		HTMLNode statusContent = pageMaker.getInfobox("#", "Freereader Status", contentNode);
-		statusContent.addChild("#", "Number of Freesite Uploads: " + status.getFreesitesUploaded());
+		HTMLNode statusContent = pageMaker.getInfobox("#", Freereader.getBaseL10n().getString("Main.Status"), contentNode);
+		statusContent.addChild("#", Freereader.getBaseL10n().getString("Main.FreeSiteNumberUp") + status.getFreesitesUploaded());
 		statusContent.addChild("br");
-		statusContent.addChild("#", "Number of Feeds: " + feeds.getFeeds().size());
+		statusContent.addChild("#", Freereader.getBaseL10n().getString("Main.FeedsNumber") + feeds.getFeeds().size());
 		statusContent.addChild("br");
-		statusContent.addChild("#", "Creation and Upload Process: ");
+		statusContent.addChild("#", Freereader.getBaseL10n().getString("Main.CreationUploadProcess"));
 		if (UpdateTask.isRunning())
-			statusContent.addChild("span", "style", "color: red; font-weight: bold;", "RUNNING");
+			statusContent.addChild("span", "style", "color: red; font-weight: bold;", Freereader.getBaseL10n().getString("Common.RUNNING"));
 		else
-			statusContent.addChild("span", "style", "color: green; font-weight: bold;", "IDLE");
+			statusContent.addChild("span", "style", "color: green; font-weight: bold;", Freereader.getBaseL10n().getString("Common.IDLE"));
 		
 		statusContent.addChild("br");
-		statusContent.addChild("#", "Last Uploaded: "
-		        + (status.getLastUploaded() == -1 ? "NEVER" : new Date(status.getLastUploaded())));
+		statusContent.addChild("#", Freereader.getBaseL10n().getString("Main.LastUpdated")
+		        + (status.getLastUploaded() == -1 ? Freereader.getBaseL10n().getString("Common.NEVER") : new Date(status.getLastUploaded())));
 		
 		// Freesite Url Box
-		HTMLNode freesiteUrlContent = pageMaker.getInfobox("#", "Your Freereader Freesite", contentNode);
+		HTMLNode freesiteUrlContent = pageMaker.getInfobox("#", Freereader.getBaseL10n().getString("Main.YourFreeReaderFreesite"), contentNode);
 		if(status.getFreesiteUrl() == null) {
-			freesiteUrlContent.addChild("#", "The Freereader Freesite has not been uploaded yet.");
+			freesiteUrlContent.addChild("#", Freereader.getBaseL10n().getString("Main.FreereaderFreesiteNotUploaded"));
 		}
 		else {
-			freesiteUrlContent.addChild("#", "Your Freereader Freesite is available at:");
+			freesiteUrlContent.addChild("#", Freereader.getBaseL10n().getString("Main.AvailabelAt"));
 			freesiteUrlContent.addChild("br");
 			freesiteUrlContent.addChild("a", "href", "/" + status.getFreesiteUrl(), status.getFreesiteUrl());
 		}
 		
 		// Create Freesite Box
-		HTMLNode indexContent = pageMaker.getInfobox("#", "Create and Upload Freesite", contentNode);
+		HTMLNode indexContent = pageMaker.getInfobox("#", Freereader.getBaseL10n().getString("Main.CreateUploadFreesite"), contentNode);
 		HTMLNode indexForm = pr.addFormChild(indexContent, "plugins.Freereader.Freereader", "createForm");
 		indexForm.addChild("input", 
 		        new String[] { "name", "type", "value" },
 		        new String[] { "createFreesite", "hidden", "createFreesite" });
 		indexForm.addChild("input", 
 		        new String[] { "type", "value" },
-		        new String[] { "submit", "Create and Upload Freesite now" });
+		        new String[] { Freereader.getBaseL10n().getString("Common.submit"), Freereader.getBaseL10n().getString("Main.CreateUpload") });
 	}
 }
