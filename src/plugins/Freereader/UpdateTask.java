@@ -148,17 +148,17 @@ public class UpdateTask extends TimerTask
 				Element currentFeedElement = new Element("current_feed");
 				currentFeedElement.addContent(feedElement);
 				
-                Element siteTitleElement = new Element("sitetitle");
-                siteTitleElement.setText(config.getBasename());
-                
+				Element siteTitleElement = new Element("sitetitle");
+				siteTitleElement.setText(config.getBasename());
+				
 				Element rootElement = new Element("freereader");
-                rootElement.addContent(siteTitleElement);
+				rootElement.addContent(siteTitleElement);
 				rootElement.addContent(feedsElement);
 				rootElement.addContent(currentFeedElement);
 				Document doc = new Document(rootElement);
 
-                // write the document into an output stream to create
-                // a byte array for the site.
+				// write the document into an output stream to create
+				// a byte array for the site.
 				ByteArrayOutputStream os = new ByteArrayOutputStream();
 				
 				JDOMSource source = new JDOMSource(doc);
