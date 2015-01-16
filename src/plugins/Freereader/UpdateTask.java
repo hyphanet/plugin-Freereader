@@ -149,10 +149,13 @@ public class UpdateTask extends TimerTask
 				currentFeedElement.addContent(feedElement);
 				
 				Element siteTitleElement = new Element("sitetitle");
-				siteTitleElement.setText(config.getBasename());
+				siteTitleElement.setText(config.getSitetitle());
+				Element sloganElement = new Element("slogan");
+				sloganElement.setText(config.getSlogan());
 				
 				Element rootElement = new Element("freereader");
 				rootElement.addContent(siteTitleElement);
+				rootElement.addContent(sloganElement);
 				rootElement.addContent(feedsElement);
 				rootElement.addContent(currentFeedElement);
 				Document doc = new Document(rootElement);

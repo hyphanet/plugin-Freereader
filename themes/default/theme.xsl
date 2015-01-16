@@ -21,7 +21,7 @@
 			<body>
 				<div id="hd">
 					<h1><xsl:value-of select="sitetitle" /></h1>
-					<p>- feeds contributed to freenet via Freereader -</p>
+					<p>- <xsl:value-of select="slogan" /> -</p>
 					<p class="updated">
 						Last update:
 						<xsl:call-template name="printDateTime">
