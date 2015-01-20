@@ -41,6 +41,16 @@ public class Config
 	private String basename;
 	
 	/**
+	 * The Title for the freesite.
+	 */
+	private String sitetitle;
+	
+	/**
+	 * The slogan of the freesite. By default advertisement for Freereader.
+	 */
+	private String slogan;
+	
+	/**
 	 * The name of the selected theme.
 	 */
 	private String theme;
@@ -68,6 +78,8 @@ public class Config
 		requestKey = requestKey.substring(4, requestKey.length()-1);
 		
 		basename = "freereader";
+		sitetitle = "Freereader";
+		slogan = "feeds contributed to freenet via Freereader";
 		theme = "default";
 	}
 	
@@ -89,6 +101,32 @@ public class Config
 	public void setTheme(String theme)
 	{
 		this.theme = theme;
+	}
+	
+	public String getSitetitle()
+	{
+		if (null == this.sitetitle) { // for old installations
+			return "Freereader";
+		}
+		return sitetitle;
+	}
+	
+	public void setSitetitle(String sitetitle)
+	{
+		this.sitetitle = sitetitle;
+	}
+	
+	public String getSlogan()
+	{
+		if (null == this.slogan) { // for old installations
+			return "feeds contributed to freenet via Freereader";
+		}
+		return slogan;
+	}
+	
+	public void setSlogan(String slogan)
+	{
+		this.slogan = slogan;
 	}
 	
 	public String getInsertKey()

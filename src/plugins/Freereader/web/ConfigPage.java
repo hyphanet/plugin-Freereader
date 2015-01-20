@@ -36,10 +36,19 @@ class ConfigPage implements WebPage
 			String s = request.getPartAsStringFailsafe("basename", 200);
 			config.setBasename(s);
 		}
+		if(request.isPartSet("sitetitle")) {
+			String s = request.getPartAsStringFailsafe("sitetitle", 200);
+			config.setSitetitle(s);
+		}
+		if(request.isPartSet("slogan")) {
+			String s = request.getPartAsStringFailsafe("slogan", 200);
+			config.setSlogan(s);
+		}
 		if(request.isPartSet("theme")) {
 			String s = request.getPartAsStringFailsafe("theme", 200);
 			config.setTheme(s);
 		}
+
 		
 		config.store();
 		
@@ -65,6 +74,16 @@ class ConfigPage implements WebPage
 		        "Freesite Basename", "The base directory of the freesite.",
 		        "basename",
 		        config.getBasename());
+		
+		addConfig(freereaderConfig,
+		        "Freesite Sitetitle", "The title for the freesite.",
+		        "sitetitle",
+		        config.getSitetitle());
+		
+		addConfig(freereaderConfig,
+		        "Freesite Slogan", "The slogen of the freesite.",
+		        "slogan",
+		        config.getSlogan());
 		
 		addConfig(freereaderConfig,
 		        "Theme", "At the moment there's only one Freereader theme.",

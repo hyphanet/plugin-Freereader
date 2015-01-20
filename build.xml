@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project default="main">
+        <property file="override.properties"/>
 	<property name="build.classes" value="bin" />
 	<property name="build.lib" value="build" />
 	<property name="java.dir" value="." />

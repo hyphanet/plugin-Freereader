@@ -16,12 +16,12 @@
 				<link rel="stylesheet" type="text/css" media="all" href="assets/style.css" />
 				<link rel="shortcut icon" href="assets/feed.png" type="image/png" />
 
-				<title>Freereader</title>
+				<title><xsl:value-of select="sitetitle" /></title>
 			</head>
 			<body>
 				<div id="hd">
-					<h1>Freereader</h1>
-					<p>- contribute your feeds to freenet -</p>
+					<h1><xsl:value-of select="sitetitle" /></h1>
+					<p>- <xsl:value-of select="slogan" /> -</p>
 					<p class="updated">
 						Last update:
 						<xsl:call-template name="printDateTime">

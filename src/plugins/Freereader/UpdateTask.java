@@ -108,7 +108,7 @@ public class UpdateTask extends TimerTask
 		// open XSL stylesheet
 		URL stylesheetUrl = getClass().getResource(themeDir + "/theme.xsl");
 		HashMap<String, Object> site = new HashMap<String, Object>();
-		try {		
+		try {
 			Source stylesheetSource = new StreamSource(new XmlReader(stylesheetUrl));
 			TransformerFactory transFact = TransformerFactory.newInstance();
 			Transformer transformer = transFact.newTransformer(stylesheetSource);
@@ -148,11 +148,20 @@ public class UpdateTask extends TimerTask
 				Element currentFeedElement = new Element("current_feed");
 				currentFeedElement.addContent(feedElement);
 				
+				Element siteTitleElement = new Element("sitetitle");
+				siteTitleElement.setText(config.getSitetitle());
+				Element sloganElement = new Element("slogan");
+				sloganElement.setText(config.getSlogan());
+				
 				Element rootElement = new Element("freereader");
+				rootElement.addContent(siteTitleElement);
+				rootElement.addContent(sloganElement);
 				rootElement.addContent(feedsElement);
 				rootElement.addContent(currentFeedElement);
 				Document doc = new Document(rootElement);
-	
+
+				// write the document into an output stream to create
+				// a byte array for the site.
 				ByteArrayOutputStream os = new ByteArrayOutputStream();
 				
 				JDOMSource source = new JDOMSource(doc);
