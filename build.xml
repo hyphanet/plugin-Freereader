@@ -26,7 +26,7 @@
 			optimize="true"
 			debug="true"
 			source="1.6" 
-			target="1.7">
+			target="1.6">
 			<classpath>
 				<pathelement location="${freenet-ext.location}"/>
 				<pathelement location="${freenet-cvs-snapshot.location}"/>
