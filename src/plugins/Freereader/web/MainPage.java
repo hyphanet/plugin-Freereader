@@ -79,6 +79,6 @@ class MainPage implements WebPage
 		        new String[] { "createFreesite", "hidden", "createFreesite" });
 		indexForm.addChild("input", 
 		        new String[] { "type", "value" },
-		        new String[] { Freereader.getBaseL10n().getString("Common.submit"), Freereader.getBaseL10n().getString("Main.CreateUpload") });
+		        new String[] { "submit", Freereader.getBaseL10n().getString("Main.CreateUpload") });
 	}
 }
