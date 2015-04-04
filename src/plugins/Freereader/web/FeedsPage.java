@@ -150,7 +150,7 @@ class FeedsPage implements WebPage
 
 	public void writeContent(HTTPRequest request, HTMLNode contentNode) 
 	{
-		HTMLNode feedsContent = pageMaker.getInfobox("#", "Add/Remove Feeds", contentNode);
+		HTMLNode feedsContent = pageMaker.getInfobox("#", Freereader.getBaseL10n().getString("Common.AddRemoveFeeds"), contentNode);
 		
 		// Add Single Form
 		HTMLNode addForm = pr.addFormChild(feedsContent, "", "addSingleForm");

@@ -32,9 +32,9 @@ public class WebInterface
 	{
 		freereader.getPageMaker().addNavigationCategory("/freereader/", "Freereader", "Freereader", freereader);
 		
-		toadletContainer.register(mainToadlet = new MainPageToadlet(client, freereader), "Freereader", "/freereader/", true, "Status", "Status", true, null);
-		toadletContainer.register(feedsToadlet = new FeedsPageToadlet(client, freereader), "Freereader", "/freereader/feeds", true, "Add/Remove Feeds", "Add/Remove Feeds", true, null);
-		toadletContainer.register(configToadlet = new ConfigPageToadlet(client, freereader), "Freereader", "/freereader/config", true, "Configuration", "Configuration", true, null);
+		toadletContainer.register(mainToadlet = new MainPageToadlet(client, freereader), "Freereader", "/freereader/", true, Freereader.getBaseL10n().getString("Common.Status"), Freereader.getBaseL10n().getString("Common.Status"), true, null);
+		toadletContainer.register(feedsToadlet = new FeedsPageToadlet(client, freereader), "Freereader", "/freereader/feeds", true, Freereader.getBaseL10n().getString("Common.AddRemoveFeeds"), Freereader.getBaseL10n().getString("Common.AddRemoveFeeds"), true, null);
+		toadletContainer.register(configToadlet = new ConfigPageToadlet(client, freereader), "Freereader", "/freereader/config", true, Freereader.getBaseL10n().getString("Common.Configuration"), Freereader.getBaseL10n().getString("Common.Configuration"), true, null);
 	}
 	
 	public void unload()

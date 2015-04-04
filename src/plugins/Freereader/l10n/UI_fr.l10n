@@ -1,0 +1,21 @@
+Common.AddRemoveFeeds=Ajouter et Supprimer des Flux
+Common.Configuration=Configuration
+Common.BaseDirectory=Répertoire de base de votre freesite.
+Common.Status=Status
+Common.RUNNING=FONCTIONNE
+Common.IDLE=EN PAUSE
+Common.submit=soumettre
+Common.NEVER=JAMAIS
+Common.submit=submit
+Main.AvailabelAt=Votre Freesite Freereader est disponible ici: 
+Main.CreateUpload=Créer et insérer un Freesite maintenant
+Main.CreationUploadProcess=Processus de Création et d'Insertion: 
+Main.LastUpdated=Dernières Insertions: 
+Main.FeedsNumber=Nombre de Flux: 
+Main.FreereaderFreesiteNotUploaded=The Freesite Freereader n'a pas encore été inséré.
+Main.FreeSiteNumberUp=Nombre de Freesite insérés: 
+Main.CreateUploadFreesite=Créer et Insérer un Freesite
+Main.Status=Status de Frereader
+Main.YourFreeReaderFreesite=Votre Freesite Freeader
+OK=OUI
+End
