@@ -13,6 +13,11 @@
 	<property name="ROME.location" location="lib/rome-1.0.jar"/>
 	<property name="tmp" location="tmp/"/>
 	
+	<property name="src" value="src"/>
+	<property name="version.src" value="plugins/Freereader/Version.java" />
+	<property name="version.build" value="plugins/Freereader/Version.class" />
+	<available file="${src}/${version.src}" property="version.present" />
+
 	<path id="classpath">
 		<pathelement location="." />
 	</path>
@@ -21,8 +26,36 @@
 		<echo>Building the .jar file.</echo>
 	</target>
 
-	<target name="compile" depends="build-dep" description="Compilation target">
+	<!-- Originally from Library's build script -->
+	<exec executable="git"
+		failifexecutionfails="false"
+		errorProperty="git.errror"
+		outputproperty="git.describe"
+		resultproperty="git.result">
+		<arg value="describe" />
+		<arg value="--always" />
+		<arg value="--abbrev=7" />
+		<arg value="--dirty" />
+	</exec>
+	<condition property="git.revision" value="${git.describe}" else="@unknown@">
+		<and>
+			<equals arg1="${git.result}" arg2="0" />
+			<isset property="git.describe" />
+		</and>
+	</condition>
+	<target name="setver" if="version.present">
+		<!-- Update the Version.java file in ${build}-->
+		<copy file="${src}/${version.src}" tofile="${build.classes}/${version.src}" overwrite="true" />
+		<replace file="${build.classes}/${version.src}">
+			<replacefilter token="@custom@" value="${git.revision}"/>
+		</replace>
+		<javac srcdir="${build.classes}" includes="${version.src}" destdir="${build.classes}" debug="on" optimize="on" source="1.6" />
+		<echo message="Updated build version to ${git.revision} in ${build.classes}/${version.src}"/>
+	</target>
+
+	<target name="compile" depends="build-dep,setver" description="Compilation target">
 		<javac srcdir="${java.dir}"
+			excludes="${src}/${version.src}"
 			destdir="${build.classes}"
 			optimize="true"
 			debug="true"
