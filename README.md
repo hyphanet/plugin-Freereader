@@ -26,8 +26,7 @@ requirements for Freereader should also be fulfilled.
 * Install Freenet version >= 0.7.5
   (not tested with older versions)
 * Start your Freenet node and go to http://127.0.0.1:8888/plugins/
-* Go to “Add an Unofficial Plugin”, insert the URL
-  http://www.example.com, uncheck the checkbox “local files only”
+* Go to “Indexing Plugins”, click on the radio button near “Freereader”
   and press “Load”
 * Freereader is now ready to use and you should now see the
   Freereader navigation under the main menu
