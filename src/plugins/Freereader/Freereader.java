@@ -54,7 +54,7 @@ public class Freereader implements FredPlugin, FredPluginThreadless, FredPluginV
 	
 	public String getVersion() 
 	{
-		return Version.getVersion() + " r" + Version.getSvnRevision();
+		return Version.getVersion() + " r" + Version.getGitRevision();
 	}
 	
 	public long getRealVersion() 

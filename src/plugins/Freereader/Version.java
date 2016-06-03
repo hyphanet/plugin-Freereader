@@ -6,8 +6,8 @@ package plugins.Freereader;
  * @author Mario Volke
  */
 public class Version {
-	/** SVN revision number. Only set if the plugin is compiled properly e.g. by emu. */
-	private static final String svnRevision = "@custom@";
+	/** Git revision number. Only set if the plugin is compiled properly e.g. by emu. */
+	private static final String gitRevision = "@custom@";
 	
 	/** Version number of the plugin for getRealVersion(). Increment this on making
 	 * a major change, a significant bugfix etc. These numbers are used in auto-update 
@@ -15,8 +15,8 @@ public class Version {
 	 * version. */
 	public static long version = 4;
 	
-	static String getSvnRevision() {
-		return svnRevision;
+	static String getGitRevision() {
+		return gitRevision;
 	}
 	
 	static long getVersion() {
@@ -25,7 +25,7 @@ public class Version {
 	
 	public static void main(String[] args) {
 		System.out.println("=====");
-		System.out.println(svnRevision);
+		System.out.println(gitRevision);
 		System.out.println("=====");
 		System.out.println(getVersion());
 	}
