@@ -123,7 +123,7 @@
 		<delete file="${tmp}/jarjar-1.0.jar"/>
 	</target>
 
-	<property name="Jaxen.mirror" value="http://dist.codehaus.org/jaxen/distributions/jaxen-1.1.1.zip" />
+	<property name="Jaxen.mirror" value="http://web.archive.org/web/20150506002151/http://dist.codehaus.org/jaxen/distributions/jaxen-1.1.1.zip" />
 	<property name="Jaxen.md5" value="d941dc9e4c6fe6667e67562699b356f4" />
 	<property name="Jaxen.sha1" value="316c96ae2ebca5ea71ecf08274e612b1868121c3" />
 	<available property="Jaxen.exist" classname="org.jaxen.Context" classpath="${Jaxen.location}" />
