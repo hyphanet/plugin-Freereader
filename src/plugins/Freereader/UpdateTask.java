@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -152,10 +153,14 @@ public class UpdateTask extends TimerTask
 				siteTitleElement.setText(config.getSitetitle());
 				Element sloganElement = new Element("slogan");
 				sloganElement.setText(config.getSlogan());
+				// the theme formats this, as XSLT date extensions are blocked by secure processing
+				Element updatedElement = new Element("updated");
+				updatedElement.setText(new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss").format(new Date()));
 				
 				Element rootElement = new Element("freereader");
 				rootElement.addContent(siteTitleElement);
 				rootElement.addContent(sloganElement);
+				rootElement.addContent(updatedElement);
 				rootElement.addContent(feedsElement);
 				rootElement.addContent(currentFeedElement);
 				Document doc = new Document(rootElement);

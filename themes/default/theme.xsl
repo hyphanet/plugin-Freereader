@@ -1,7 +1,6 @@
 <?xml version="1.0"?>
 <xsl:stylesheet 
 	xmlns:xsl="http://www.w3.org/1999/XSL/Transform" 
-	xmlns:datetime="http://exslt.org/dates-and-times"
 	version="1.0">
 
 	<xsl:output method="xml" encoding="UTF-8" indent="yes" 
@@ -25,7 +24,7 @@
 					<p class="updated">
 						Last update:
 						<xsl:call-template name="printDateTime">
-							<xsl:with-param name="dateTime" select="datetime:date-time()"/>
+							<xsl:with-param name="dateTime" select="updated"/>
 						</xsl:call-template>
 					</p>
 				</div>
