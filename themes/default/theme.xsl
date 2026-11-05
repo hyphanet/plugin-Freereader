@@ -1,7 +1,6 @@
 <?xml version="1.0"?>
 <xsl:stylesheet 
 	xmlns:xsl="http://www.w3.org/1999/XSL/Transform" 
-	xmlns:datetime="http://exslt.org/dates-and-times"
 	version="1.0">
 
 	<xsl:output method="xml" encoding="UTF-8" indent="yes" 
@@ -25,7 +24,7 @@
 					<p class="updated">
 						Last update:
 						<xsl:call-template name="printDateTime">
-							<xsl:with-param name="dateTime" select="datetime:date-time()"/>
+							<xsl:with-param name="dateTime" select="updated"/>
 						</xsl:call-template>
 					</p>
 				</div>
@@ -82,7 +81,16 @@
 									</xsl:choose>
 								</xsl:otherwise>
 							</xsl:choose>	
-							<h2><xsl:value-of select="atom:title" /></h2>
+							<h2>
+								<xsl:choose>
+									<xsl:when test="atom:link[@rel='alternate']/@href">
+										<a href="{atom:link[@rel='alternate']/@href}"><xsl:value-of select="atom:title" /></a>
+									</xsl:when>
+									<xsl:otherwise>
+										<xsl:value-of select="atom:title" />
+									</xsl:otherwise>
+								</xsl:choose>
+							</h2>
 							<xsl:choose>
 								<xsl:when test="atom:author/atom:name">
 									<div class="entry-author">by <xsl:value-of select="atom:author/atom:name" /></div>
