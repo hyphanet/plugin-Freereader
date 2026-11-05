@@ -88,3 +88,19 @@ along with Freereader. If not, see http://www.gnu.org/licenses/.
 ### 6) Author
 
 Mario Volke
+
+### 7) Building from source
+
+Freereader follows the Freenet plugins convention: it expects a
+compiled Freenet tree in ../fred/ (built with `./gradlew jar` in
+fred), and uses ../fred/build/libs/freenet.jar.
+
+    ./gradlew build
+
+The plugin is written to build/libs/Freereader.jar. ROME, JDOM and
+Jaxen are downloaded from Maven Central and bundled into the jar.
+
+To use a freenet.jar from a different location, pass it on the
+command line or set it in gradle.properties:
+
+    ./gradlew build -PfreenetJar=../freenet/build/libs/freenet.jar

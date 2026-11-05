@@ -1,0 +1,87 @@
+plugins {
+    id 'java'
+}
+
+// Freenet plugins convention: a compiled Freenet tree in ../fred/ (built with ./gradlew jar).
+// Override with -PfreenetJar=/path/to/freenet.jar or in gradle.properties.
+def freenetJar = findProperty('freenetJar') ?: '../fred/build/libs/freenet.jar'
+
+repositories {
+    mavenCentral()
+    maven {
+        url = 'https://mvn.freenetproject.org/'
+        content {
+            includeGroup 'org.freenetproject'
+        }
+    }
+}
+
+dependencies {
+    // Provided by the Freenet node at runtime
+    compileOnly files(freenetJar)
+    compileOnly 'org.freenetproject:freenet-ext:29'
+
+    // Bundled into the plugin jar; their transitive dependencies are not needed
+    implementation('rome:rome:1.0') { transitive = false }
+    implementation('org.jdom:jdom:1.1.3') { transitive = false }
+    implementation('jaxen:jaxen:1.1.1') { transitive = false }
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.release = 8
+    options.encoding = 'UTF-8'
+    // release 8 is still what fred targets
+    options.compilerArgs << '-Xlint:-options'
+}
+
+def gitRevision = providers.provider {
+    try {
+        def describe = providers.exec {
+            commandLine 'git', 'describe', '--always', '--abbrev=7', '--dirty'
+        }.standardOutput.asText.get().trim()
+        describe ?: '@unknown@'
+    } catch (Exception ignored) {
+        '@unknown@'
+    }
+}
+
+def versionSource = file('src/plugins/Freereader/Version.java')
+
+def generateVersion = tasks.register('generateVersion', Copy) {
+    def revision = gitRevision
+    inputs.property 'gitRevision', revision
+    from(versionSource) {
+        into 'plugins/Freereader'
+    }
+    into layout.buildDirectory.dir('generated/sources/version')
+    filter { String line -> line.replace('@custom@', revision.get()) }
+}
+
+sourceSets {
+    main {
+        java {
+            srcDirs = ['src']
+            srcDir generateVersion
+            exclude { it.file == versionSource }
+        }
+        resources {
+            srcDirs = ['src']
+            include '**/*.l10n'
+        }
+    }
+}
+
+tasks.named('jar', Jar) {
+    archiveFileName = 'Freereader.jar'
+    manifest {
+        attributes 'Plugin-Main-Class': 'plugins.Freereader.Freereader'
+    }
+    from('themes') {
+        into 'themes'
+    }
+    from {
+        configurations.runtimeClasspath.collect { zipTree(it) }
+    }
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+    exclude 'META-INF/*.SF', 'META-INF/*.DSA', 'META-INF/*.RSA'
+}

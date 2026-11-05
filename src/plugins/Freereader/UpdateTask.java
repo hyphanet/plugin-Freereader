@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -81,8 +82,9 @@ public class UpdateTask extends TimerTask
 		
 		String themeDir = "/themes/" + config.getTheme();
 		
-		// fetch feeds
+		// fetch feeds and the images they reference
 		List<SyndFeed> fetchedFeeds = new ArrayList<SyndFeed>();
+		ImageFetcher imageFetcher = new ImageFetcher();
 		for(Feed f : feeds.getFeeds()) {
 			try {
 				URL feedUrl = new URL(f.url);
@@ -91,6 +93,8 @@ public class UpdateTask extends TimerTask
 				
 				// convert all feeds to atom 1.0
 				feed.setFeedType("atom_1.0");
+				
+				imageFetcher.processFeed(feed);
 				
 				fetchedFeeds.add(feed);
 			}
@@ -108,6 +112,8 @@ public class UpdateTask extends TimerTask
 		// open XSL stylesheet
 		URL stylesheetUrl = getClass().getResource(themeDir + "/theme.xsl");
 		HashMap<String, Object> site = new HashMap<String, Object>();
+		if(!imageFetcher.getImages().isEmpty())
+			site.put(ImageFetcher.IMAGE_DIR, imageFetcher.getImages());
 		try {
 			Source stylesheetSource = new StreamSource(new XmlReader(stylesheetUrl));
 			TransformerFactory transFact = TransformerFactory.newInstance();
@@ -152,10 +158,14 @@ public class UpdateTask extends TimerTask
 				siteTitleElement.setText(config.getSitetitle());
 				Element sloganElement = new Element("slogan");
 				sloganElement.setText(config.getSlogan());
+				// the theme formats this, as XSLT date extensions are blocked by secure processing
+				Element updatedElement = new Element("updated");
+				updatedElement.setText(new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss").format(new Date()));
 				
 				Element rootElement = new Element("freereader");
 				rootElement.addContent(siteTitleElement);
 				rootElement.addContent(sloganElement);
+				rootElement.addContent(updatedElement);
 				rootElement.addContent(feedsElement);
 				rootElement.addContent(currentFeedElement);
 				Document doc = new Document(rootElement);

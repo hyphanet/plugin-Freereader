@@ -1,4 +1,4 @@
 .idea/
-bin/
-dist
-lib
+*.iml
+.gradle/
+build/
